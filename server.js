@@ -30,7 +30,7 @@ app.get("/api/:date_string", function (req, res) {
   const date_string = req.params.date_string;
 
   if(date_string.indexOf('-')==-1){
-    return res.json({unix: parseInt(date_string), utc: new Date(parseInt(date_string)).toUTCString()});
+    return res.json({unix: new Date(parseInt(date_string)).valueOf(), utc: new Date(parseInt(date_string)).toUTCString()});
   }
 
   const date_obj = new Date(date_string);
