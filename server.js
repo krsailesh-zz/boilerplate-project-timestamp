@@ -27,10 +27,10 @@ app.get('/api', (req,res) => {
 })
 
 app.get("/api/:date_string", function (req, res) {
-  const date_string = req.params.date_string;
+  let date_string = req.params.date_string;
 
-  if(date_string.indexOf('-')==-1){
-    return res.json({unix: new Date(parseInt(date_string)).valueOf(), utc: new Date(parseInt(date_string)).toUTCString()});
+  if(date_string.match(/\d{5,}/)){
+    date_string = parseInt(date_string);
   }
 
   const date_obj = new Date(date_string);
